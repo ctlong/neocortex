@@ -1,14 +1,19 @@
 const express = require('express');
 const router  = express.Router();
 
-const user  = require('./model/User/router');
+const user = require('./api/user/router');
 
-/* GET home page. */
+// home page
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.json({message: 'neocortex-api'});
 });
 
-/* USE user router. */
-router.use('/user', user);
+// api routes
+router.use('/users', user);
+
+// 404
+router.use(function(req, res) {
+  res.status(404).send({url: req.originalUrl + ' not found'})
+});
 
 module.exports = router;

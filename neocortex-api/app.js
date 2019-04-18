@@ -1,18 +1,27 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express    = require('express');
+const mongoose   = require('mongoose');
+const helmet     = require('helmet');
+const logger     = require('morgan');
+const bluebird   = require('bluebird');
+const bodyParser = require('body-parser');
 
 const routes = require('./routes');
+const config = require('./config');
 
-var app = express();
+const app = express();
 
+mongoose.Promise = bluebird;
+mongoose.connect(config.mongo.url, {useNewUrlParser: true});
+
+app.use(helmet());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+
+app.listen(config.server.port, () => {
+  console.log(`Magic happens on port ${config.server.port}`)
+});
 
 module.exports = app;
