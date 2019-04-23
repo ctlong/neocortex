@@ -27,6 +27,72 @@ export default class Dashboard extends React.Component {
                 <Text style={styles.interactionDetail}>Meeting | April 14, 11:20 AM</Text>
               </View>
             </View>
+
+            <View style={styles.interactionItem}>
+              <View>
+                <Image source={require('../assets/temp_pic.png')} style={styles.interactionImage} />
+              </View>
+
+              <View>
+                <Text style={styles.interactionName}>Jennifer Rodham</Text>
+                <Text style={styles.interactionDetail}>Meeting | April 14, 11:20 AM</Text>
+              </View>
+            </View>
+
+            <View style={styles.interactionItem}>
+              <View>
+                <Image source={require('../assets/temp_pic.png')} style={styles.interactionImage} />
+              </View>
+
+              <View>
+                <Text style={styles.interactionName}>Jennifer Rodham</Text>
+                <Text style={styles.interactionDetail}>Meeting | April 14, 11:20 AM</Text>
+              </View>
+            </View>
+
+            <View style={styles.interactionItem}>
+              <View>
+                <Image source={require('../assets/temp_pic.png')} style={styles.interactionImage} />
+              </View>
+
+              <View>
+                <Text style={styles.interactionName}>Jennifer Rodham</Text>
+                <Text style={styles.interactionDetail}>Meeting | April 14, 11:20 AM</Text>
+              </View>
+            </View>
+
+            <View style={styles.interactionItem}>
+              <View>
+                <Image source={require('../assets/temp_pic.png')} style={styles.interactionImage} />
+              </View>
+
+              <View>
+                <Text style={styles.interactionName}>Jennifer Rodham</Text>
+                <Text style={styles.interactionDetail}>Meeting | April 14, 11:20 AM</Text>
+              </View>
+            </View>
+
+            <View style={styles.interactionItem}>
+              <View>
+                <Image source={require('../assets/temp_pic.png')} style={styles.interactionImage} />
+              </View>
+
+              <View>
+                <Text style={styles.interactionName}>Jennifer Rodham</Text>
+                <Text style={styles.interactionDetail}>Meeting | April 14, 11:20 AM</Text>
+              </View>
+            </View>
+
+            <View style={styles.interactionItem}>
+              <View>
+                <Image source={require('../assets/temp_pic.png')} style={styles.interactionImage} />
+              </View>
+
+              <View>
+                <Text style={styles.interactionName}>Jennifer Rodham</Text>
+                <Text style={styles.interactionDetail}>Meeting | April 14, 11:20 AM</Text>
+              </View>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -52,7 +118,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginTop: 25,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3
   },
   interactionImage: {
     width: 60,
@@ -62,9 +132,11 @@ const styles = StyleSheet.create({
   interactionName: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#585858',
     paddingBottom: 5
   },
   interactionDetail: {
-    fontSize: 16
+    fontSize: 16,
+    color: '#585858'
   }
 })
