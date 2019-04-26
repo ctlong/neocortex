@@ -5,7 +5,8 @@ const config = {
   },
   mongo: {
     url: process.env.MONGO_DB_URI || 'mongodb://localhost/neocortex'
-  }
+  },
+  secret: process.env.SECRET || 'secret'
 }
 
 module.exports = config
