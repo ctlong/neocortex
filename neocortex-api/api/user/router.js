@@ -8,14 +8,22 @@ const router = express.Router();
 router.route('/login')
   .post([
       check('email').isEmail().normalizeEmail(),
-      check('password').length({min: 8}).trim().escape()
+      check('password')
+        .isLength({min: 8})
+        .withMessage('must be at least 8 characters long')
+        .trim().escape()
     ], User.login)
 
 router.route('/register')
   .post([
       check('email').isEmail().normalizeEmail(),
-      check('password').length({min: 8}).trim().escape(),
-      check('name').isLength({min: 1}).trim().escape()
+      check('password')
+        .isLength({min: 8})
+        .withMessage('must be at least 8 characters long')
+        .trim().escape(),
+      check('name')
+        .isLength({min: 1})
+        .trim().escape()
     ], User.register)
 
 module.exports = router;

@@ -1,8 +1,18 @@
-const mongoose     = require('mongoose');
+const mongoose             = require('mongoose');
+const { validationResult } = require('express-validator/check');
+
 const Relationship = require('./schema');
 
 exports.create = function(req, res) {
-  var newRelationship = new Relationship(req.body);
+  const errors = validationResult(req);
+  if(!errors.isEmpty())
+    return res.status(422).json({ errors: errors.array() });
+
+  var newRelationship = new Relationship({
+    name: req.body.name,
+    creator: req.payload.id,
+    relationshipType: req.body.relationshipType
+  });
   newRelationship.save(function(err, relationship) {
     if(err) res.status(500).send({error: err});
     res.status(201).json(relationship);
@@ -11,7 +21,7 @@ exports.create = function(req, res) {
 
 exports.findAll = function(req, res) {
   Relationship
-    .find({'userID': req.payload._id})
+    .find({'creator': req.payload.id})
     .populate('relationshipType')
     .exec(function(err, relationships) {
       if(err) res.status(500).send({error: err});

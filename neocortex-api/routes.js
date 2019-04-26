@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
 
 // api routes
 router.use('/users', user);
-router.use('/relationshipTypes', jwt({
+router.use('/relationship-types', jwt({
   secret: secret,
   userProperty: 'payload'
 }), relationshipType);
